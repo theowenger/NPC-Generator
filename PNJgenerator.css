@@ -1,0 +1,114 @@
+
+
+@font-face { /* Définition d'une nouvelle police nommée Roman_SD */
+    font-family: 'Roman_SD';
+    src: url('Roman_SD.eot');
+    src: url('Roman_SD.eot?#iefix') format('embedded-opentype'),
+         url('Roman_SD.ttf') format('truetype'),
+         url('Roman_SD.svg#Roman_SD') format('svg');
+}
+*
+{
+
+	font-family: 'Roman_SD',arial-black, arial,sherif;
+		font-weight: bold;
+}
+body {
+	font-size: 1.3em;
+	background-color: #CCCCCC;
+	font-weight: bold;
+
+}
+.allGenerator {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-top: 50px;
+}
+.titre {
+	background-image: url(bannerDragon.png);
+	position: relative;
+	border: 2px black solid;
+	text-align: center;
+}
+
+.nomPNJ {
+	background-color: white;
+	border: 2px black solid;
+	width: 48%;
+	min-width: 45%;
+	height: 350px;
+	position: relative;
+	padding: 10px;
+
+	
+}
+.image {
+
+
+	height: 300px;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+
+.physique {
+	background-color: white;
+	border: 2px black solid;
+	width: 48%;
+	min-width: 30%;
+	height: 350px;
+	position: absolute;
+	right: 0px;
+	padding: 10px;
+}
+
+.social {
+	background-color: white;
+	border: 2px black solid;
+	width: 48%;
+	height: 240px;
+	position: relative;
+	top: 40px;
+	padding: 10px;
+}
+
+.personnalité {
+	background-color: white;
+	border: 2px black solid;
+	width: 48%;
+	height: 240px;
+	position: absolute;
+	right: 0px;
+	bottom: -39px;
+	padding: 10px;
+}
+.output {
+	font-family: arial-black, arial,sherif;
+	font-size: 1em;
+	width: 20%;
+	position: absolute;
+	right: 60px;
+}
+.nomPNJ .output {
+
+	position: absolute;
+	right: 400px; 
+}
+
+.dice {
+	zoom: 8%;
+	border: 0px white solid;
+}
+
+.titre .dice {
+	zoom: 20%;
+	position: relative;
+	top: 100px;
+}
+
+.button {
+	border: 0px white solid;
+	background-color: white;
+}

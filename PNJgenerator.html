@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" / href="PNJgenerator.css">
+    <title>generateur de PNJ</title>
+  </head>
+  
+  <body>
+
+<div class="titre">
+<h1>PNJ generateur</h1>
+<h2>Creer aleatoirement votre PNJ : <button type="button" class="button" id="randomButton"><img src="logodice.png" alt="photo de des" class="dice"></button></h2>
+</div>
+<div class="allGenerator">
+
+<div class="nomPNJ">
+  <div class="image" id="images"></div> 
+  <p>Description:</p>
+  <p><button type="button" class="button" id="nameButton"><img src="logodice.png" alt="photo de des" class="dice"></button>Nom:
+    <input id=name class="output" /></p>
+  <p><button type="button" class="button" id="firstNameButton"><img src="logodice.png" alt="photo de des" class="dice"></button>Prenom:<input id=firstName class="output" /></p>
+   <p><button type="button" class="button" id="sexButton"><img src="logodice.png" alt="photo de des" class="dice"></button>sexe:<input id=sex class="output" /></p>
+   <p><button type="button" class="button" id="personaButton"><img src="logodice.png" alt="photo de des" class="dice"></button>personnalité:<input id=persona class="output" /></p>
+  <p><button type="button" class="button" id="weaponButton"><img src="logodice.png" alt="photo de des" class="dice"></button>armes:<input id=weapon class="output" /></p>
+  </div>
+
+<div class="physique">
+  <p>Carac Physique:</p>
+
+  <p><button type="button" class="button" id="ageButton"><img src="logodice.png" alt="photo de des" class="dice"></button>Age:<input id=age class="output" /></p>
+  <p><button type="button" class="button" id="tailleButton"><img src="logodice.png" alt="photo de des" class="dice"></button>taille:<input id=taille class="output" /></p>
+  <p><button type="button" class="button" id="poidsButton"><img src="logodice.png" alt="photo de des" class="dice"></button>poids:<input id=poids class="output" /></p>
+  <p><button type="button" class="button" id="raceButton"><img src="logodice.png" alt="photo de des" class="dice"></button>ethnie:<input id=race class="output" /></p>
+  <p><button type="button" class="button" id="colorSkinButton"><img src="logodice.png" alt="photo de des" class="dice"></button>couleur de peau:<input id=colorSkin class="output" /></p>
+</div>
+
+<div class="social">
+  <p>Statut social </p>
+  <p><button type="button" class="button" id="richButton"><img src="logodice.png" alt="photo de des" class="dice"></button>Richesse:<input id=rich class="output" /></p>
+  <p><button type="button" class="button" id="jobButton"><img src="logodice.png" alt="photo de des" class="dice"></button>profession:<input id=job class="output" /></p> 
+  <p><button type="button" class="button" id="clothButton"><img src="logodice.png" alt="photo de des" class="dice"></button>tenue:<input id=cloth class="output" /></p> 
+</div>
+
+<div class="personnalité">
+  <p>Identité:</p>
+  <p><button type="button" class="button" id="religionButton"><img src="logodice.png" alt="photo de des" class="dice"></button>croyance:<input id=religion class="output" /></p>
+  <p><button type="button" class="button" id="attitudeButton"><img src="logodice.png" alt="photo de des" class="dice"></button>attitude envers le groupe:<input id=attitude class="output" /></p>
+  <p><button type="button" class="button" id="fightButton"><img src="logodice.png" alt="photo de des" class="dice"></button>aptitude au combat:<input id=fight class="output" /></p>
+</div>
+</div>
+
+    <script type="text/javascript">
+
+//On cree les differents tableaux des formulaires
+
+      /**
+       * INITIALISATION DES CONSTANTES
+       */
+      const arrayName = ['Atwater','Agassi', 'Apatow', 'Akagawa', 'Averescu', 'Arrington', 'Agrippa', 'Aiken', 'Albertson', 'Alexandre', 'Bien aimé', 'Douleur', 'Coupe humble', 'Ashbluff', 'Gueule de marbre', 'Armes', 'Akka', 'Aoki', 'Aldrich', 'Apache', 'Alinski', 'Désaï', 'Darby', 'Dwyer', 'Dixon', 'Danton', 'Déforger', 'Ditka', 'Dominguez', 'Decker', 'Dobermann', 'Dunlop', 'Dumont', 'Dandridge', 'Diamond', 'Dobra', 'Dukas', 'Agneau', 'Autre', 'Bidbury', 'Botkine', 'Benoit', 'Biddercombe', 'Baldwin', 'Bennett', 'Bourland', 'Bodle', 'Cintreuse', 'Optimale', 'Bobshaw', 'Berse', 'Courroie', 'Bourn', 'Barque', 'Beebe', 'Banu', 'Bozzelli', 'Bogaerts', 'Blanks', 'Eastwood', 'Elway', 'Eslinger', 'Ellerbrock', 'Eno', 'Endo', 'Ether', 'Ébersol', 'Everson', 'Esapa', 'Méchant', 'Escoba',  'Eggleston', 'Hermine', 'Erickson', 'Keller', 'Kessler', 'Kobayashi', 'Klecko', 'Kicklighter', 'Kidder', 'Kershaw', 'Kaminsky', 'Kirby', 'Keene', 'Kenny', 'Keogh', 'Kipps', 'Kendrick', 'Kuang', 'Fairchild', 'Octobre', 'Vespertine', 'Fellowes', 'Omen', 'Saule', 'Gannon', 'Presto', 'Au vent', 'Grell', 'Powers', 'Wixxer', 'Halliwell', 'Xanthos', 'Grande tour', 'Quill', 'Xenide', 'Vent ralenti', 'Rast', 'Chamillet', 'Bougaitelet', 'Hallowswif', 'Coldsprinter', 'Winddane', 'Achillée', 'Illfat', 'Énigme', 'bois d if', 'Jacaranda', 'Yearwood', 'Yellen', 'Yaeger', 'Iankovitch', 'Yamaguchi', 'yarborough', 'Youngblood', 'Yanetta', 'Yadao', 'Winchell', 'Winters', 'Walsh', 'Whalen', 'Watson', 'Wooster', 'Woodson', 'Winthrop', 'Hazerider', 'Ombrebosquet', 'Wight', 'Webb', 'Woodard', 'Wixxer', 'Wong', 'Moustache', 'Yale', 'Yasumoto', 'Yates', 'Younger', 'Yoakum', 'York', 'Rigby', 'Zaba', 'Surret', 'Swiatek', 'Sloane', 'Stapleton', 'Seibert', 'Stroud', 'Stockton', 'Scardino', 'Espace', 'Spieth', 'Coudre', 'Stiner', 'Soria', 'Saxon', 'Shields', 'Stély', 'Steele', 'Chanassard', 'Ronchessac', 'Éclat d os', 'ventre de monstre', 'Sacrémore', 'Malefoy', 'Moïse', 'Morozov', 'Maçon', 'Metcalf', 'McGillicutty', 'Montero', 'Molinari', 'Marais', 'Moffet', 'McCabe', 'Manus', 'Malenko', 'Mullinax', 'Morrissey', 'Dent de man', 'Menthe'];
+
+      const arrayFirstName = ['Lyfrea', 'Jeffbald', 'Beorthniel', 'Theodchris', 'Winechris', 'Stanlett', 'Ni Jaris', 'Fastrol', 'Alding', 'Gifucan', 'Ealald', 'Tonron', 'Leofu ceol', 'Docethel', 'Ferson', 'Garar', 'Dodneth', 'Ingcas', 'Subeo', 'Walter', 'Aidan', 'Wilbur', 'Dennis', 'Randy', 'Cesar', 'Julius', 'Nathan', 'Nate', 'Noah', 'Clint', 'Arnold', 'Jean', 'Grant', 'Gene', 'Wesley', 'Roderic', 'Dean', 'Quentin', 'Nathaniel', 'Oscar', 'Rudolf', 'Jasper', 'Lionel', 'Ray', 'Leroy', 'Max', 'Orson', 'Denzel', 'Marlon', 'Robin', 'Stevan', 'Roman', 'Arthur', 'Maurice', 'Wendel', 'Willen', 'Sydney', 'Cecil', 'Leonard', 'Melvyn', 'Sheldon', 'Douglas', 'Glen', 'Anton', 'Lester', 'Lloyd', 'Dustin', 'Wyatt', 'Lee', 'Noel', 'Francis', 'Burt', 'Keith', 'Harvey', 'Kyle', 'Karl', 'Percy', 'Brad', 'Cliff', 'Augustus', 'Ross', 'Jethro', 'Vincent', 'Hector', 'Homer', 'Spencer', 'Jerry', 'Roland', 'Adrian', 'Reneux', 'Joshua', 'Abrahan', 'Leigh', 'Aarom', 'Claude', 'Algeorn', 'Sedgwick', 'Newland', 'Calvin', 'Garreth', 'Ralph', 'Elliott', 'Macon', 'Owen', 'Norman', 'Percival', 'Kirk', 'Miles', 'Walter', 'Randolph', 'Clarence', 'Edwin', 'Adam', 'Jacob', 'Lucas', 'Seth', 'Perry', 'Zachary', 'Zach', 'Elias','Terence'];
+
+      const arrayWeapon = ['Arc', 'Arc long', 'Attrape-coquin', 'Bardiche', 'Bâton à feu', 'pistolet', 'fusil', 'baton de mage', 'Bec de corbin', 'Braquemard', 'Arbalète', 'Chokutō', 'Cimier', 'Claymore', 'Corsèque', 'Couillard', 'Dague', 'Dirk', 'Dulle', 'Griet', 'Écu', 'Épée', 'Épée à deux mains', 'Épée bâtarde', 'Épieu', 'Espadon', 'Espringale', 'Fauchon', 'Faule', 'Faux de guerre', 'Fléau d armes', 'Fourche de guerre', 'Fronde', 'Fustibale', 'Glaive', 'Hache d armes', 'Hache de guerre', 'Hache', 'Hallebarde', 'Hampe', 'Javeline', 'Javelot', 'Katana', 'Lance', 'Latte', 'Marteau d armes', 'Masse d armes', 'Morgenstern', 'Nadziak', 'Pavois', 'Percemaille', 'Pierrière', 'Pique', 'Pointe', 'Rondache', 'canon portatif', 'fouet', 'poings', 'ceste', 'sans armes', 'griffes', ]
+
+      const arraySex = ['Homme','Femme']
+
+      const arrayRace = ['Chondathien','Calishite','Damarien','Illuskien','Mulien', 'Rashémi','Shou','Téthyrien','Turami']
+      
+      const arrayColorSkin = ['blanche','noire','brune']
+
+      const arrayRich = ['sans le sous', 'endetté', 'pauvre', 'classe populaire', 'bourgeois', 'riche', 'très riche','fortuné']
+
+      const arrayJob = ['aventurier','soldat', 'eclaireur','garde','forgeron','menuisier','tisseur','eboueur','sans emploi', 'ecuyer','boulanger', 'bouffon', 'pecheur', 'paysan', 'vigneron', 'meunier', 'marchand', 'cuisinier', 'aubergiste','boucher','tailleur', 'chasseur','maçon', 'charpentier', 'vitrier', 'joallier', 'potier','nourrice', 'chandelier','libraire','medecin', 'apothicaire','tanneur','rentier']
+
+      const arrayCloth = ['Costume d’artiste','Habit d’érudit','Habit de cour','Habit de moine','Habit de noble','Habit de paysan','Tenue d’artisan','Tenue d’explorateur','Tenue de voyage','Tenue polaire','Tenue sacerdotale','Toilette royale',
+    		'haillons']
+
+      const arrayPersona = ['Admirateur','Affectueux','Amical','Amoureux','Chaleureux','Charmeur','Convoiteux','Désireux','Enchanté','Excité','Passionné','Séducteur','Sympathique','Tendre','Allégre','Amusé','Content','Enchanté','Euphorique','Excité','Fervant','Fier','Heureux','blagueur','Joyeux','Jovial','Optimiste','Satisfait','Soulagé','Triomphant','Agité','Agressif','Amer','Bougon','Colèrique','Cruel','Dégoût','Destructeur','Exaspéré','Féroce','Frustré','Furieux','Haineux','Irrité','Jaloux','Maussade','Mécontent','Méprisant','Outrageux','Rageur','Rancunier','Tourmenté','Vengeur','Abandonné','Accablé','Agonie','Anxieux','Chagriné','Découragé','Dépressif','Désappointé','Désesperé','Égaré','Malheureux','Mécontent','Mélancolique','Misèreux','Négligent','Rejeté','Seul','Solitaire','Souffrant','Triste','Angoissé','Anxieux','Craintif','Hystérique','Méfiant','Nervosé','Paniqué','Saut d’humeur','Secoué','Soucieux','Confus','Coupable','Embarrassé','Honteux','Humilié','Insulté','Pénitent','Remord','Ahuri','Amorphe','Apathique','Audacieux','Brave','Compétent','Courageux','Curieux','Déterminé','Dominant','Ennuyé','Épuisé','Étonné','Fragile','Impatient','Impuissant','Indécis','Indifférent','Insatisfait','Intimidé','Intimidant','Intrigué','Irritant','Prudent','Pudique','Répugnant','Réticent','Soumis','Stupéfait','Surpris','Suspicieux','Timide',]
+      
+      const arrayReligion = ['Aurile, déesse de l\'hiver','Azouth, dieu des magiciens','Baine, dieu de la tyrannie','Beshaba, déesse de la malchance','Bhaal, dieu du meurtre','Chauntéa, déesse de l\'agriculture','Cyric, dieu du mensonge','Déneïr, dieu de l\'écriture','Eldath, déesse de la paix','Gond, dieu de l\'artisanat','Heaume, dieu de la protection','Ilmater, dieu de l\'endurance','Kélemvor, dieu des morts','Lathandre, dieu de la naissance','Leira, déesse de l\'illusion','Lliira, déesse de la joie','Loviatar, déesse de la souffrance','Mailikki, déesse des forêts','Malar, dieu de la chasse','Mask, dieu des voleurs','Milil, dieu de la poésie','Myrkul, dieu de la mort','Mystra, déesse de la magie','Oghma, dieu de la connaissance','Savras, dieu de la divination','Séluné, déesse de la lune','Shar, déesse des ténèbres','Sunie, déesse de l\'amour','Sylvanus, dieu de la nature','Talona, déesse de la maladie','Talos, dieu des tempêtes','Tempus, dieu de la guerre','Torm, dieu du courage','Tymora, déesse de la chance','Tyr, dieu de la justice','Umberlie, déesse des mers','Waukyne, déesse du commerce']
+      
+      const arrayAttitude = ['detestable','completement fermé','mefiant','neutre','pressé', 'interessé', 'pret à aider', 'loyal']
+      
+      const arrayFight = ['protecteur','fuyard','lache','a distance', 'corps a corps', 'suicidaire','stratege','non letal','destructeur', 'precis','defensif', 'offensif']
+
+      const images = [
+        '1.jpg',
+        '2.jpg',
+        '3.jpg',
+        '4.jpg',
+        '5.jpg',
+        '6.jpg',
+        '7.jpg',
+        '8.jpg',
+        '9.jpg',
+        '10.jpg',
+        '11.jpg',
+        '12.jpg'
+      ];
+
+      /**
+       * FONCTIONS
+       */
+
+      function getRandomElementFromArray(array) {
+        const randomIndex = Math.floor(Math.random()*array.length)
+        return array[randomIndex]
+      }
+
+      function randomAge(min = 20, max = 100) {
+      
+      //on cherche la diff entre les deux
+      let difference = max - min;
+
+      //On genere un nombre aleatoire
+      let randAge = Math.random();
+
+      //On multiplie la diff
+      randAge = Math.floor( randAge * difference);
+
+      //rajoute valeur mini
+      randAge = randAge + min;
+
+      return randAge;
+
+    }
+
+    //On creer une fonction de poids aleatoire
+
+    function randomPoids(min = 40, max = 100) {
+      //on cherche la diff entre les deux
+      let difference = max - min;
+
+      //On genere un nombre aleatoire
+
+      let randPoids = Math.random();
+
+      randPoids = Math.floor( randPoids * difference);
+
+      //rajoute valeur mini
+      randPoids = randPoids + min;
+
+      return randPoids;
+
+    }
+
+      //On creer une fonction de taille aleatoire
+      
+    function randomTaille(min = 50, max = 99) {
+      //on cherche la diff entre les deux
+      let difference = max - min;
+
+      //On genere un nombre aleatoire
+      let randTaille = Math.random(); 
+  
+      //On multiplie la diff
+      randTaille = Math.floor( randTaille * difference);
+
+      //rajoute valeur mini
+      randTaille = randTaille + min;
+
+      return randTaille;
+
+    }
+
+    function afficherImage() {
+      // On récupère une image au hasard
+      var image = getRandomElementFromArray(images);
+
+      // On sélection l'element qui va contenir notre image
+      const conteneur = document.getElementById('images');
+
+      // On supprime l'image présente dans le conteneur d'image
+      conteneur.innerHTML = "";
+
+      // On crée la nouvelle image
+      const img = document.createElement('img');
+
+      // On définit quelle image doit etre affichée
+      img.src = image
+
+      // On ajoute la class et l'id
+      img.classList.add('image')
+      img.id = "image"
+
+      // On affiche l'image créée dans le conteneur dédié
+      conteneur.appendChild(img)
+    }
+
+
+    //au click du bouton, on insere une valeur aleatoire dans le form
+
+  randomButton.addEventListener('click', function(){
+    let selectedAge = randomAge();
+    let selectedPoids = randomPoids();
+    let selectedTaille = randomTaille();
+    let selectedSex = getRandomElementFromArray(arraySex);
+    let selectedRace = getRandomElementFromArray(arrayRace);
+    let selectedColorSkin = getRandomElementFromArray(arrayColorSkin);
+    let selectedCloth = getRandomElementFromArray(arrayCloth);
+    let selectedRich = getRandomElementFromArray(arrayRich);
+    let selectedReligion = getRandomElementFromArray(arrayReligion);
+    let selectedPersona = getRandomElementFromArray(arrayPersona);
+    let SelectedAttitude = getRandomElementFromArray(arrayAttitude);
+    let selectedFight = getRandomElementFromArray(arrayFight);
+
+    afficherImage();
+    document.getElementById("name").value = getRandomElementFromArray(arrayName);
+    document.getElementById("firstName").value = getRandomElementFromArray(arrayFirstName);;
+    document.getElementById("weapon").value = getRandomElementFromArray(arrayWeapon);
+    document.getElementById('job').value = getRandomElementFromArray(arrayJob);
+    document.getElementById("age").value = (selectedAge + " ans");
+    document.getElementById("poids").value = (selectedPoids + " Kilos");
+    document.getElementById("taille").value = ("1 metre " + selectedTaille);
+    document.getElementById("sex").value = selectedSex;
+    document.getElementById("race").value = selectedRace;
+    document.getElementById("colorSkin").value = selectedColorSkin;
+    document.getElementById("rich").value = selectedRich;
+    document.getElementById("cloth").value = selectedCloth;
+    document.getElementById("religion").value = selectedReligion;
+    document.getElementById('persona').value = selectedPersona;
+    document.getElementById("attitude").value = SelectedAttitude;
+    document.getElementById("fight").value = selectedFight;
+
+  });
+    document.getElementById('nameButton').addEventListener('click', function(){
+      document.getElementById("name").value = getRandomElementFromArray(arrayName);
+      });
+
+    document.getElementById('firstNameButton').addEventListener('click', function(){
+      document.getElementById("firstName").value = getRandomElementFromArray(arrayFirstName);
+      });
+
+    document.getElementById('weaponButton').addEventListener('click', function(){
+      document.getElementById("weapon").value = getRandomElementFromArray(arrayWeapon);
+      });
+
+    document.getElementById('sexButton').addEventListener('click', function(){
+      document.getElementById("sex").value = getRandomElementFromArray(arraySex);
+      });
+
+    document.getElementById('ageButton').addEventListener('click', function(){
+      let selectedAge = randomAge();
+      document.getElementById("age").value = (selectedAge + " Ans");
+      });
+
+    document.getElementById('tailleButton').addEventListener('click', function(){
+    	let selectedTaille = randomTaille();
+      document.getElementById("taille").value = ("1 metre " + selectedTaille);
+      });
+
+    document.getElementById('poidsButton').addEventListener('click', function(){
+    	let selectedPoids = randomPoids();
+      document.getElementById("poids").value = (selectedPoids + " Kilos");
+      });
+
+ 	 document.getElementById('raceButton').addEventListener('click', function(){
+      document.getElementById("race").value = getRandomElementFromArray(arrayRace);
+      });
+
+    document.getElementById('colorSkinButton').addEventListener('click', function(){
+      document.getElementById("colorSkin").value = getRandomElementFromArray(arrayColorSkin);
+      });
+
+    document.getElementById('richButton').addEventListener('click', function(){
+      document.getElementById("rich").value = getRandomElementFromArray(arrayRich);
+      });
+
+    document.getElementById('jobButton').addEventListener('click', function(){
+      document.getElementById("job").value = getRandomElementFromArray(arrayJob);
+      });
+
+    document.getElementById('clothButton').addEventListener('click', function(){
+      document.getElementById("cloth").value = getRandomElementFromArray(arrayCloth);
+      });
+
+    document.getElementById('personaButton').addEventListener('click', function(){
+      document.getElementById("persona").value = getRandomElementFromArray(arrayPersona);
+      });
+
+    document.getElementById('religionButton').addEventListener('click', function(){
+      document.getElementById("religion").value = getRandomElementFromArray(arrayReligion);
+      });
+
+    document.getElementById('attitudeButton').addEventListener('click', function(){
+      document.getElementById("attitude").value = getRandomElementFromArray(arrayAttitude);
+      });
+
+    document.getElementById('fightButton').addEventListener('click', function(){
+      document.getElementById("fight").value = getRandomElementFromArray(arrayFight);
+      });
+
+    </script>
+  </body>
+</html>

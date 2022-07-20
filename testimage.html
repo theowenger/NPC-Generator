@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Comment afficher une image aléatoirement en HTML et JavaScript ?</title>
+</head>
+<body>   
+<div id="images"></div>
+<script>
+const images = [
+'<img src="1.jpg" alt="image 001">',
+'<img src="2.jpg" alt="image 002">',
+'<img src="3.jpg" alt="image 003">'
+];
+const conteneur = document.getElementById('images');
+function afficherImage() {
+var a = Math.floor(Math.random() * images.length);
+var image = images[a];
+conteneur.innerHTML = image;
+}
+
+afficherImage();
+</script>
+</body>
+</html>
